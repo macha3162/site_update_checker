@@ -1,0 +1,29 @@
+%h1 Listing sites
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Url
+      %th Site versions count
+      %th Status
+      %th Last crawled at
+      %th
+      %th
+      %th
+
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td= site.name
+        %td= site.url
+        %td= site.site_versions_count
+        %td= site.status
+        %td= site.last_crawled_at
+        %td= link_to 'Show', site
+        %td= link_to 'Edit', edit_site_path(site)
+        %td= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Site', new_site_path

@@ -1,0 +1,25 @@
+%h1 Listing site_versions
+
+%table
+  %thead
+    %tr
+      %th Site
+      %th Checksum
+      %th Body
+      %th
+      %th
+      %th
+
+  %tbody
+    - @site_versions.each do |site_version|
+      %tr
+        %td= site_version.site_id
+        %td= site_version.checksum
+        %td= site_version.body
+        %td= link_to 'Show', site_version
+        %td= link_to 'Edit', edit_site_version_path(site_version)
+        %td= link_to 'Destroy', site_version, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Site version', new_site_version_path

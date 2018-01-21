@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Site:
+  = @site_version.site_id
+%p
+  %b Checksum:
+  = @site_version.checksum
+%p
+  %b Body:
+  = @site_version.body
+
+= link_to 'Edit', edit_site_version_path(@site_version)
+\|
+= link_to 'Back', site_versions_path

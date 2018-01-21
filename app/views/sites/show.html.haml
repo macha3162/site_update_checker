@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @site.name
+%p
+  %b Url:
+  = @site.url
+%p
+  %b Site versions count:
+  = @site.site_versions_count
+%p
+  %b Status:
+  = @site.status
+%p
+  %b Last crawled at:
+  = @site.last_crawled_at
+
+= link_to 'Edit', edit_site_path(@site)
+\|
+= link_to 'Back', sites_path
