@@ -13,13 +13,10 @@
     = f.label :url
     = f.text_field :url
   .field
-    = f.label :site_versions_count
-    = f.number_field :site_versions_count
+    = f.label :start_with
+    = f.text_field :start_with
   .field
-    = f.label :status
-    = f.text_field :status
-  .field
-    = f.label :last_crawled_at
-    = f.datetime_select :last_crawled_at
+    = f.label :end_with
+    = f.text_field :end_with
   .actions
     = f.submit 'Save'

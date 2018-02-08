@@ -1,3 +1,6 @@
+%style
+  = Diffy::CSS
+
 %p#notice= notice
 
 %p
@@ -19,3 +22,9 @@
 = link_to 'Edit', edit_site_path(@site)
 \|
 = link_to 'Back', sites_path
+
+%hr
+  -if @current_body.try(:checksum) == @previous_body.try(:checksum)
+    %p 差分はありません
+  -else
+    = raw Diffy::Diff.new(diff_str(@current_body.try(:body)), diff_str(@previous_body.try(:body))).to_s(:html_simple) if @current_body.present?

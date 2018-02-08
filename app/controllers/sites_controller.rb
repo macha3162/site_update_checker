@@ -10,6 +10,8 @@ class SitesController < ApplicationController
   # GET /sites/1
   # GET /sites/1.json
   def show
+    @current_body = @site.site_versions.last
+    @previous_body = @current_body.previous if @current_body.present?
   end
 
   # GET /sites/new
@@ -67,8 +69,7 @@ class SitesController < ApplicationController
       @site = Site.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :url, :site_versions_count, :status, :last_crawled_at)
+      params.require(:site).permit(:name, :url, :start_with, :end_with)
     end
 end

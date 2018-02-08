@@ -1,0 +1,2 @@
+require 'kconv'
+require 'zlib'

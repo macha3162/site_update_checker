@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'haml-rails'
 gem 'faraday'
+gem 'aasm'
+gem 'diffy'
+gem 'sanitize'
 
 
 group :development, :test do
