@@ -5,7 +5,7 @@ class Site < ApplicationRecord
   validates :name, :url, presence: true
 
   aasm(:status) do
-    state :non_diff, :initial => true
+    state :non_diff, initial: true
     state :running, :exist_diff, :failed
 
     event :run do
@@ -21,7 +21,7 @@ class Site < ApplicationRecord
     end
 
     event :checked do
-      transitions from: [:failed, :exist_diff], to: :non_diff
+      transitions from: %i[failed exist_diff], to: :non_diff
     end
 
     event :error do
@@ -36,9 +36,9 @@ class Site < ApplicationRecord
     response = Faraday.get url
     body_html = response.body.toutf8
     touch(:last_crawled_at)
-    current_version = self.site_versions.last
-    new_version = site_versions.build({body: body_html, status_code: response.status})
-    if (new_version.generate_check_sum == current_version.try(:checksum))
+    current_version = site_versions.last
+    new_version = site_versions.build({ body: body_html, status_code: response.status })
+    if new_version.generate_check_sum == current_version.try(:checksum)
       new_version.destroy
       logger.info '前回取得分からコンテンツに差分はありませんでした。'
       false

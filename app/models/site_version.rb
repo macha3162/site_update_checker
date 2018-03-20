@@ -13,15 +13,15 @@ class SiteVersion < ApplicationRecord
   # end
 
   def previous
-    site.site_versions.where("id < ?", self.id).order('id DESC').first
+    site.site_versions.where('id < ?', self.id).order('id DESC').first
   end
 
   def next
-    site.site_versions.where("id > ?", self.id).order('id ASC').first
+    site.site_versions.where('id > ?', self.id).order('id ASC').first
   end
 
   def diff_body
-    Sanitize.clean(body, remove_contents: ['script', 'style']).gsub(/[\r\n|\t|\r|\n]+/, "\n")
+    Sanitize.clean(body, remove_contents: %w[script style]).gsub(/[\r\n|\t|\r|\n]+/, "\n")
   end
 
   def generate_check_sum

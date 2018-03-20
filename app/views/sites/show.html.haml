@@ -1,23 +1,25 @@
 %style
   = Diffy::CSS
+.page-header
+  = link_to sites_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_site_path(@site), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  %h1 Show site
 
-%p#notice= notice
-
-%p
-  %b Name:
-  = @site.name
-%p
-  %b Url:
-  = @site.url
-%p
-  %b Site versions count:
-  = @site.site_versions_count
-%p
-  %b Status:
-  = @site.status
-%p
-  %b Last crawled at:
-  = @site.last_crawled_at
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @site.name
+  %dt Url:
+  %dd= @site.url
+  %dt Site versions count:
+  %dd= @site.site_versions_count
+  %dt Status:
+  %dd= @site.status
+  %dt Last crawled at:
+  %dd= @site.last_crawled_at
 
 = link_to 'Edit', edit_site_path(@site)
 \|

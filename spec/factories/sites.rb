@@ -4,6 +4,6 @@ FactoryBot.define do
     url "MyString"
     site_versions_count 1
     status "MyString"
-    last_crawled_at "2018-01-21 15:25:15"
+    last_crawled_at "2018-03-20 16:23:53"
   end
 end

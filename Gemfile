@@ -38,6 +38,9 @@ gem 'faraday'
 gem 'aasm'
 gem 'diffy'
 gem 'sanitize'
+gem 'ransack'
+gem 'jquery-rails'
+gem 'bootstrap-generators', '~> 3.3.4'
 
 
 group :development, :test do
