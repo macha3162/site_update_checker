@@ -34,11 +34,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 #
 gem 'haml-rails'
-gem 'faraday'
+gem 'faraday', '0.10'
 gem 'aasm'
 gem 'diffy'
 gem 'sanitize'
 gem 'ransack'
+gem 'kaminari'
+
+gem 'sorcery', '~> 0.11.0'
+
 gem 'jquery-rails'
 gem 'bootstrap-generators', '~> 3.3.4'
 

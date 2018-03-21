@@ -1,4 +1,4 @@
-= form_for @site, html: { class: "form-horizontal", role: "form" } do |f|
+= , class: 'form-control' @site, html: { class: "form-horizontal", role: "form" } do |f|
   -if @site.errors.any?
     .alert.alert-danger.alert-dismissable{role: "alert"}
       %button.close{type: "button", data: {dismiss: "alert"} }

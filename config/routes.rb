@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :site_versions
+  get 'login', to: 'sessions#new', as: :login
+  match 'logout', to: 'sessions#destroy', via: [:get, :post], as: :logout
+
+  resources :users
+  root 'sites#index'
   resources :sites
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :sessions, only: %i[index create]
 end
