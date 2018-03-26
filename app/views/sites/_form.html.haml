@@ -1,4 +1,4 @@
-= , class: 'form-control' @site, html: { class: "form-horizontal", role: "form" } do |f|
+= form_for @site, html: { class: "form-horizontal", role: "form" } do |f|
   -if @site.errors.any?
     .alert.alert-danger.alert-dismissable{role: "alert"}
       %button.close{type: "button", data: {dismiss: "alert"} }
@@ -18,18 +18,6 @@
     = f.label :url, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :url, class: 'form-control'
-  .form-group
-    = f.label :site_versions_count, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.number_field :site_versions_count, class: 'form-control'
-  .form-group
-    = f.label :status, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.text_field :status, class: 'form-control'
-  .form-group
-    = f.label :last_crawled_at, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.datetime_select :last_crawled_at, class: 'form-control'
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'

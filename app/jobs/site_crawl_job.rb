@@ -13,9 +13,9 @@ class SiteCrawlJob < ApplicationJob
       rescue => e
         logger.warn e
         site.error!
-      else
-        logger.info '差分の確認が済んでいないのでクローリングをスキップします。'
       end
+    else
+      logger.info '差分の確認が済んでいないのでクローリングをスキップします。'
     end
   end
 end

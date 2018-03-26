@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'haml-rails'
 gem 'faraday', '0.10'
+gem 'sidekiq'
 gem 'aasm'
 gem 'diffy'
 gem 'sanitize'
@@ -42,6 +43,7 @@ gem 'ransack'
 gem 'kaminari'
 
 gem 'sorcery', '~> 0.11.0'
+gem 'pdf-reader'
 
 gem 'jquery-rails'
 gem 'bootstrap-generators', '~> 3.3.4'
@@ -55,6 +57,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rubycritic'
 end
 
 group :development do
@@ -72,6 +75,3 @@ group :development do
   gem 'binding_of_caller'
   gem 'bullet'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

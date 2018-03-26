@@ -4,12 +4,12 @@ class Site < ApplicationRecord
   has_many :site_versions, dependent: :destroy
   validates :name, :url, presence: true
 
-  aasm(:status) do
+  aasm column: 'status' do
     state :non_diff, initial: true
-    state :running, :exist_diff, :failed
+    state :running, :exist_diff, :failed, :checked
 
     event :run do
-      transitions from: [:non_diff], to: :running
+      transitions from: [:non_diff, :checked], to: :running
     end
 
     event :found_diff do
@@ -20,8 +20,8 @@ class Site < ApplicationRecord
       transitions from: :running, to: :non_diff
     end
 
-    event :checked do
-      transitions from: %i[failed exist_diff], to: :non_diff
+    event :check do
+      transitions from: %i[failed exist_diff], to: :checked
     end
 
     event :error do
@@ -37,7 +37,7 @@ class Site < ApplicationRecord
     body_html = response.body.toutf8
     touch(:last_crawled_at)
     current_version = site_versions.last
-    new_version = site_versions.build({ body: body_html, status_code: response.status })
+    new_version = site_versions.build({body: body_html, status_code: response.status})
     if new_version.generate_check_sum == current_version.try(:checksum)
       new_version.destroy
       logger.info '前回取得分からコンテンツに差分はありませんでした。'

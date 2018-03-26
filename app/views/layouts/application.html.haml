@@ -28,11 +28,9 @@
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{href: "#"} Home
+              = link_to 'Site', root_path
             %li
-              = link_to 'About', users_path
-            %li
-              %a{href: "#contact"} Contact
+              = link_to 'Users', users_path
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == 'error' ? "danger" : "success" } alert-dismissable", role: "alert" do

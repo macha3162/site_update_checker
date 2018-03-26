@@ -1,23 +1,25 @@
 .page-header
+  = link_to crawl_sites_path, method: :post, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-refresh
+    Crawl Site
   = link_to new_site_path, class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-plus
     New Site
+
   %h1 Listing sites
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
     %thead
       %tr
-        %th
+        %th.text-center
           = sort_link @q, :name
-        %th
+        %th.text-center
           = sort_link @q, :url
-        %th
-          = sort_link @q, :status
-        %th
+        %th.text-center
+          = sort_link @q, :status, 'Status'
+        %th.text-center
           = sort_link @q, :last_crawled_at
-        %th
-        %th
         %th
 
     %tbody
@@ -25,9 +27,7 @@
         %tr
           %td= site.name
           %td= site.url
-          %td= site.status
-          %td= site.last_crawled_at
-          %td= link_to 'Show', site
-          %td= link_to 'Edit', edit_site_path(site)
-          %td= link_to 'Destroy', site, data: { confirm: 'Are you sure?' }, method: :delete
+          %td.text-center= site.status
+          %td.text-right= time_ago_in_words site.last_crawled_at
+          %td.text-center= link_to 'Show', site
   = paginate @sites
