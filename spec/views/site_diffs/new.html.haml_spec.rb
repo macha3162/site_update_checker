@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "site_versions/new", type: :view do
+RSpec.describe "site_diffs/new", type: :view do
   before(:each) do
     assign(:site_version, SiteVersion.new(
       :site_id => 1,

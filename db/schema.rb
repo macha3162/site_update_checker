@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180320084231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "site_versions", force: :cascade do |t|
+  create_table "site_diffs", force: :cascade do |t|
     t.integer "site_id"
     t.string "checksum"
     t.integer "status_code"

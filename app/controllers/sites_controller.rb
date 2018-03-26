@@ -7,8 +7,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @current_body = @site.site_versions.last
-    @previous_body = @current_body.previous if @current_body.present?
+    redirect_to site_diffs_path(@site)
   end
 
   def new
@@ -39,7 +38,7 @@ class SitesController < ApplicationController
 
   def check
     @site.check!
-    redirect_to sites_url, notice: 'Site was successfully checked.'
+    redirect_to site_url(@site), notice: 'Site was successfully checked.'
   end
 
   def crawl

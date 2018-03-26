@@ -29,6 +29,15 @@ class Site < ApplicationRecord
     end
   end
 
+
+  def version_number(current)
+    site_versions.where('id <= ?', current.id).count
+  end
+
+  def current_body
+    site_versions.last
+  end
+
   # データのクローリングを行なう
   # 前回クロール時より差分が合った場合には、データを保存する。
   # return true: 差分あり, false: 差分なし

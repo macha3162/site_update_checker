@@ -1,0 +1,54 @@
+%style
+  = Diffy::CSS
+.page-header
+  = link_to sites_path, class: 'btn btn-default' do
+    %span.glyphicon.glyphicon-list-alt
+    Back
+  = link_to edit_site_path(@site), class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-pencil
+    Edit
+  -if @site.may_check?
+    = link_to site_check_path(@site), method: :post, class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-check
+      Check
+  %h1 Show site
+
+%dl.dl-horizontal
+  %dt Name:
+  %dd= @site.name
+  %dt Url:
+  %dd= @site.url
+  %dt Status:
+  %dd= @site.status
+  %dt crawled at:
+  %dd= @current_body.created_at
+
+.page-header
+  %h3
+    Version
+    %sub
+      ="#{@site.version_number(@current_body)}/#{@site.site_versions_count}"
+
+= link_to site_diff_path(@site, @next_body||0), {disabled: @next_body.nil?, class: 'btn btn-primary'}  do
+  %span.glyphicon.glyphicon-check
+  Next
+&nbsp;
+= link_to site_diff_path(@site, @previous_body||0), {disabled: @previous_body.nil?, class: 'btn btn-primary'} do
+  %span.glyphicon.glyphicon-check
+  Prev
+
+%hr
+
+-if @current_body.try(:checksum) == @previous_body.try(:checksum)
+  %p 差分はありません
+-else
+  .scroll
+    = raw Diffy::Diff.new(diff_str(@previous_body.try(:body)), diff_str(@current_body.try(:body)), context: 3, include_plus_and_minus_in_html: true).to_s(:html_simple) if @current_body.present?
+
+
+= javascript_tag do
+  $(function() {
+  var pos = $("li.ins").position();
+  $(".scroll").stop().animate({scrollTop: pos.top - 100}, 500, 'swing');
+  });
+

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "site_versions/index", type: :view do
+RSpec.describe "site_diffs/index", type: :view do
   before(:each) do
-    assign(:site_versions, [
+    assign(:site_diffs, [
       SiteVersion.create!(
         :site_id => 2,
         :checksum => "Checksum",
@@ -16,7 +16,7 @@ RSpec.describe "site_versions/index", type: :view do
     ])
   end
 
-  it "renders a list of site_versions" do
+  it "renders a list of site_diffs" do
     render
     assert_select "tr>td", :text => 2.to_s, :count => 2
     assert_select "tr>td", :text => "Checksum".to_s, :count => 2

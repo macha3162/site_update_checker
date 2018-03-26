@@ -29,5 +29,5 @@
           %td= site.url
           %td.text-center= site.status
           %td.text-right= time_ago_in_words site.last_crawled_at
-          %td.text-center= link_to 'Show', site
+          %td.text-center= link_to 'Show', site_diffs_path(site)
   = paginate @sites
