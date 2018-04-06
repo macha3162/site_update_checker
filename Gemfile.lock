@@ -247,6 +247,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.0.1)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     reek (4.8.0)
       codeclimate-engine-rb (~> 0.4.0)
       parser (>= 2.5.0.0, < 2.6)
@@ -390,6 +392,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 5.1.4)
   ransack
+  redis-namespace
   rspec-rails
   rubocop
   rubycritic
