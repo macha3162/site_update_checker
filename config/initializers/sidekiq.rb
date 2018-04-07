@@ -1,6 +1,6 @@
 Sidekiq.configure_server do |config|
   if Rails.env.production?
-    config.redis = Redis.new(url: URI.parse(ENV['REDISTOGO_URL']))
+    config.redis = {url: ENV['REDISTOGO_URL'], namespace: 'sidekiq'}
   else
     config.redis = {url: 'redis://localhost:6379', namespace: 'sidekiq'}
   end
