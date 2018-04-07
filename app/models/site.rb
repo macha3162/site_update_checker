@@ -31,7 +31,7 @@ class Site < ApplicationRecord
 
 
   def version_number(current)
-    site_versions.where('id <= ?', current.id).count
+    current.present? ? site_versions.where('id <= ?', current.id).count : 0
   end
 
   def current_body

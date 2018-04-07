@@ -21,7 +21,7 @@
   %dt Status:
   %dd= @site.status
   %dt crawled at:
-  %dd= @current_body.created_at
+  %dd= @current_body.try(:created_at)
 
 .page-header
   %h3
