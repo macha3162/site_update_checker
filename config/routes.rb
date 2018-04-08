@@ -1,6 +1,10 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  mount Sidekiq::Web, at: "/sidekiq"
+
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
+  end
+  mount Sidekiq::Web, at: "/_sidekiq"
 
   get 'login', to: 'sessions#new', as: :login
   match 'logout', to: 'sessions#destroy', via: [:get, :post], as: :logout
