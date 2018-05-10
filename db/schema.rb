@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320084231) do
+ActiveRecord::Schema.define(version: 20180509221203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "site_diffs", force: :cascade do |t|
+  create_table "site_types", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "site_versions", force: :cascade do |t|
     t.integer "site_id"
     t.string "checksum"
     t.integer "status_code"
@@ -35,6 +40,10 @@ ActiveRecord::Schema.define(version: 20180320084231) do
     t.datetime "last_crawled_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "site_type_id"
+    t.string "title"
+    t.string "operator"
+    t.text "note"
   end
 
   create_table "users", force: :cascade do |t|

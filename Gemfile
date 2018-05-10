@@ -42,6 +42,7 @@ gem 'diffy'
 gem 'sanitize'
 gem 'ransack'
 gem 'kaminari'
+gem 'active_hash'
 
 gem 'sorcery', '~> 0.11.0'
 gem 'pdf-reader'

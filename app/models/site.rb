@@ -1,8 +1,12 @@
 class Site < ApplicationRecord
   include AASM
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :site_type
   has_many :site_versions, dependent: :destroy
+
   validates :name, :url, presence: true
+  validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
   aasm column: 'status' do
     state :non_diff, initial: true
