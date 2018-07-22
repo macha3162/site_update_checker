@@ -42,10 +42,13 @@ class Site < ApplicationRecord
     site_versions.last
   end
 
+
   # データのクローリングを行なう
   # 前回クロール時より差分が合った場合には、データを保存する。
   # return true: 差分あり, false: 差分なし
   def crawling
+
+
     response = Faraday.get url
     body_html = response.body.toutf8
     touch(:last_crawled_at)
@@ -61,4 +64,19 @@ class Site < ApplicationRecord
       true
     end
   end
+
+  # def get_content(url)
+  #   response = Faraday.get url
+  #
+  #   case response.headers['content-type']
+  #   when /pdf/
+  #     PDF::Reader.new
+  #   end
+  # end
+  #
+  # require 'open-uri'
+  #
+  # io = open('http://example.com/somefile.pdf')
+  # reader = PDF::Reader.new(io)
+  # puts reader.info
 end

@@ -7,6 +7,9 @@ class SiteCrawlJob < ApplicationJob
         site.run!
         if (site.crawling)
           site.found_diff!
+          User.send_notice.each do |user|
+            UserMailer.diff_notice(user, site).deliver_now
+          end
         else
           site.no_diff!
         end

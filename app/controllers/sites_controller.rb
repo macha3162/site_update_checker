@@ -38,14 +38,14 @@ class SitesController < ApplicationController
 
   def check
     @site.check!
-    redirect_to site_url(@site), notice: 'Site was successfully checked.'
+    redirect_to site_url(@site), notice: 'サイトを確認済み状態にしました。次回のタイミングで調査されます。'
   end
 
   def crawl
      Site.find_each do |site|
        SiteCrawlJob.perform_later(site)
      end
-     redirect_to sites_url, notice: 'crawl job was created.'
+     redirect_to sites_url, notice: 'サイトの巡回監視を開始しました。'
   end
 
   def destroy

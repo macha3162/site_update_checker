@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -60,6 +59,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rubycritic'
+
+  # メールのプレビュー
+  gem 'letter_opener'
+  gem 'letter_opener_web'
 end
 
 group :development do

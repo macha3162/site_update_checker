@@ -19,6 +19,10 @@
     .col-sm-10
       = f.text_field :email, class: 'form-control'
   .form-group
+    = f.label :send_notice, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.check_box :send_notice, class: 'form-control'
+  .form-group
     = f.label :password, class: 'col-sm-2 control-label'
     .col-sm-10
       = f.password_field :password, class: 'form-control'
