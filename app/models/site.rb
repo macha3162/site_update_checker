@@ -8,7 +8,7 @@ class Site < ApplicationRecord
   validates :name, :url, presence: true
   validates :url, format: /\A#{URI::regexp(%w(http https))}\z/
 
-  aasm column: 'status' do
+  aasm :status do
     state :non_diff, initial: true
     state :running, :exist_diff, :failed, :checked
 

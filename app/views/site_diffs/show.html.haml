@@ -14,13 +14,13 @@
   %h1 Show site
 
 %dl.dl-horizontal
-  %dt Name:
+  %dt= "#{Site.human_attribute_name(:name)} :"
   %dd= @site.name
-  %dt Url:
-  %dd= @site.url
-  %dt Status:
-  %dd= @site.status
-  %dt crawled at:
+  %dt= "#{Site.human_attribute_name(:url)} :"
+  %dd= link_to @site.url, @site.url, target: '_blank'
+  %dt ステータス :
+  %dd= @site.aasm(:status).human_state
+  %dt= "#{Site.human_attribute_name(:last_crawled_at)} :"
   %dd= @current_body.try(:created_at)
 
 .page-header

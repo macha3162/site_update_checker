@@ -68,8 +68,14 @@ ja:
         other: "%{count}年以上"
 
   activerecord:
+    models:
+      site: サイト
+      user: 管理者
     attributes:
       site:
+        name: サイト名
+        url: URL
+        last_crawled_at: 最終巡回日時
         status:
           non_diff: 差分なし
           running: 実行中

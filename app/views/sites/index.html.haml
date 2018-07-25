@@ -27,7 +27,7 @@
         %tr
           %td= site.name
           %td= site.url
-          %td.text-center= site.status
+          %td.text-center= site.aasm(:status).human_state
           %td.text-right= time_ago_in_words site.last_crawled_at
           %td.text-center= link_to 'Show', site_diffs_path(site)
   = paginate @sites

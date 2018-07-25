@@ -16,6 +16,8 @@ module SiteChecker
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Tokyo'
 
+    config.i18n.default_locale = :ja
+
     config.active_job.queue_adapter = :sidekiq
   end
 end
