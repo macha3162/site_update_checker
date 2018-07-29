@@ -1,0 +1,226 @@
+<div style="margin:0px auto;max-width:600px;background:#fff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;background:#fff;" align="center" border="0">
+        <tbody>
+        <tr>
+            <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;">
+                <!--[if mso | IE]>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="vertical-align:top;width:600px;">
+                <![endif]-->
+                <div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div style="font-size:1px;line-height:15px;white-space:nowrap;">&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div class="mj-column-per-50 outlook-group-fix" data-vertical-align="top" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--[if mso | IE]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center"
+       style="width:600px;">
+    <tr>
+        <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin:0px auto;max-width:600px;background:#fff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;background:#fff;" align="center" border="0">
+        <tbody>
+        <tr>
+            <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:10px 15px;">
+                <!--[if mso | IE]>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="vertical-align:top;width:600px;">
+                <![endif]-->
+                <div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;padding:10px 0px;" align="left">
+                                <div class="" style="cursor:auto;color:#4a4a4a;font-family:'Open Sans', Helvetica, 'Hiragino Kaku Gothic ProN', Meiryo, Arial, sans-serif;font-size:16px;line-height:30px;text-align:left;">
+                                    <div class="contents-section-block" style="padding-right: 25px; padding-left: 25px;">
+                                        <%= @site.name %>に差分がありました。
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;padding:10px 0px;" align="left">
+                                <div class="" style="cursor:auto;color:#4a4a4a;font-family:'Open Sans', Helvetica, 'Hiragino Kaku Gothic ProN', Meiryo, Arial, sans-serif;font-size:16px;line-height:30px;text-align:left;">
+                                    <!-- for protect style on the mailer -->
+                                    <div class="contents-section-block" style="padding-right: 25px; padding-left: 25px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table-striped-list" style="border-collapse: collapse; width: 100%; font-size: 16px; line-height: 22px; color: #4a4a4a; border-bottom: solid 1px #eee;">
+                                            <tbody>
+                                            <!-- 以下、odd/evenでスタイル変えるためだけに同じ内容ですが分岐(mjml build後スタイルがあたります) -->
+                                            <tr>
+                                                <th class="table-striped-list__th" style="width: 25%; font-weight: 400; vertical-align: top; border-top: solid 1px #eee; border-left: solid 1px #eee; padding-top: 12px; padding-left: 20px; padding-right: 15px; padding-bottom: 12px;" valign="top">
+                                                    <%= link_to @site.name, site_diffs_url(@site), target: '_blank' %>
+                                                </th>
+                                                <td class="table-striped-list__td" style="font-weight: 400; border-top: solid 1px #eee; border-left: solid 1px #eee; border-right: solid 1px #eee; padding-top: 4px; padding-left: 15px; padding-right: 20px; padding-bottom: 4px;">
+                                                    <p class="table-striped-list__td-inner" style="margin-top: 8px; margin-bottom: 6px;">
+                                                        <span style="white-space: nowrap;">状態: <%= @site.status %></span>
+                                                    </p>
+                                                    <p class="table-striped-list__td-inner" style="margin-top: 8px; margin-bottom: 6px;">
+                                                        <span>監視対象: <%= link_to @site.url, @site.url %></span>
+                                                    </p>
+                                                    <p class="table-striped-list__td-inner" style="margin-top: 8px; margin-bottom: 6px;">
+                                                        <span>更新日時: <%= @site.last_crawled_at %></span>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--[if mso | IE]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if mso | IE]>
+
+<![endif]-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center"
+       style="width:600px;">
+    <tr>
+        <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin:0px auto;max-width:600px;background:#fff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;background:#fff;" align="center" border="0">
+        <tbody>
+        <tr>
+            <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;">
+                <!--[if mso | IE]>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="vertical-align:top;width:600px;">
+                <![endif]-->
+                <div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div style="font-size:1px;line-height:40px;white-space:nowrap;">&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div class="mj-column-per-50 outlook-group-fix" data-vertical-align="top" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--[if mso | IE]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center"
+       style="width:600px;">
+    <tr>
+        <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin:0px auto;max-width:600px;background:#f2f2f2;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="font-size:0px;width:100%;background:#f2f2f2;" align="center" border="0">
+        <tbody>
+        <tr>
+            <td style="text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:0px;">
+                <!--[if mso | IE]>
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="vertical-align:top;width:600px;">
+                <![endif]-->
+                <div class="mj-column-per-100 outlook-group-fix" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                        <tbody>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div style="font-size:1px;line-height:22px;white-space:nowrap;">&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="word-break:break-word;font-size:0px;">
+                                <div class="mj-column-per-50 outlook-group-fix" data-vertical-align="top" style="vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;">
+                                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--[if mso | IE]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
