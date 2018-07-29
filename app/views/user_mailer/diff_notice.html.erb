@@ -85,7 +85,7 @@
                                                 </th>
                                                 <td class="table-striped-list__td" style="font-weight: 400; border-top: solid 1px #eee; border-left: solid 1px #eee; border-right: solid 1px #eee; padding-top: 4px; padding-left: 15px; padding-right: 20px; padding-bottom: 4px;">
                                                     <p class="table-striped-list__td-inner" style="margin-top: 8px; margin-bottom: 6px;">
-                                                        <span style="white-space: nowrap;">状態: <%= @site.status %></span>
+                                                        <span style="white-space: nowrap;">状態: <%= @site.aasm(:status).human_state %></span>
                                                     </p>
                                                     <p class="table-striped-list__td-inner" style="margin-top: 8px; margin-bottom: 6px;">
                                                         <span>監視対象: <%= link_to @site.url, @site.url %></span>
