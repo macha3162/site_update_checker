@@ -48,7 +48,7 @@ gem 'pdf-reader'
 
 gem 'jquery-rails'
 gem 'bootstrap-generators', '~> 3.3.4'
-
+gem 'sendgrid-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
