@@ -28,6 +28,6 @@
           %td= site.name
           %td= truncate site.try(:url) || '', length: 100
           %td.text-center= site.aasm(:status).human_state
-          %td.text-right= time_ago_in_words site.last_crawled_at
+          %td.text-right= time_ago_in_words site.last_crawled_at if site.last_crawled_at.present?
           %td.text-center= link_to 'Show', site_diffs_path(site)
   = paginate @sites
