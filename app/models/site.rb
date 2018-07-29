@@ -1,5 +1,6 @@
 class Site < ApplicationRecord
   include AASM
+  paginates_per 50
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :site_type
