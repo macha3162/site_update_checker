@@ -21,7 +21,7 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     if @site.save
       SiteCrawlJob.perform_later(@site)
-      redirect_to @site, notice: 'Site was successfully created.'
+      redirect_to @site, notice: 'サイトを作成し、巡回を開始しました。'
     else
       render :new
     end
@@ -30,7 +30,7 @@ class SitesController < ApplicationController
   def update
     if @site.update(site_params)
       SiteCrawlJob.perform_later(@site)
-      redirect_to @site, notice: 'Site was successfully updated.'
+      redirect_to @site, notice: 'サイトを更新し、巡回を開始しました。'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
-    redirect_to sites_url, notice: 'Site was successfully destroyed.'
+    redirect_to sites_url, notice: 'サイトの削除が完了しました。'
   end
 
   private

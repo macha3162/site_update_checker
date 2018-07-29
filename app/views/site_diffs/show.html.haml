@@ -7,6 +7,9 @@
   = link_to edit_site_path(@site), class: 'btn btn-primary' do
     %span.glyphicon.glyphicon-pencil
     Edit
+  = link_to site_path(@site), method: :delete, data: { confirm: 'サイトを削除してよろしいですか？' }, class: 'btn btn-danger' do
+    %span.glyphicon.glyphicon-pencil
+    Delete
   -if @site.may_check?
     = link_to site_check_path(@site), method: :post, class: 'btn btn-primary' do
       %span.glyphicon.glyphicon-check
