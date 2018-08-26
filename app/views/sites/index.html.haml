@@ -11,7 +11,7 @@
 = search_form_for @q, method: :get, class: 'form-inline' do |f|
   .form-group
     = f.text_field :url_or_name_cont, placeholder: 'サイト名 or URL', size: 40, class: "form-control"
-    = f.select :status_eq, Site.aasm(:status).states_for_select,{}, include_blank: true, class: "form-control"
+    = f.select :status_eq, Site.aasm(:status).states_for_select, {include_blank: true} , class: "form-control"
     = f.submit '検索',  class: "btn btn-default"
 
 
