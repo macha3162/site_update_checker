@@ -67,7 +67,12 @@ class Site < ApplicationRecord
   private
 
   def get_content(url)
-    response = Faraday.get url
+    connection = Faraday.new url do |conn|
+      conn.use FaradayMiddleware::FollowRedirects
+      conn.adapter :net_http
+    end
+    response = connection.get
+
     case response.headers['content-type']
     when /pdf/
       begin
@@ -79,9 +84,9 @@ class Site < ApplicationRecord
       rescue => e
         logger.errror(e)
         return 'エラーが発生しました', response.status
-      else
-        return response.body.toutf8, response.status
       end
+    else
+      return response.body.toutf8, response.status
     end
   end
 end

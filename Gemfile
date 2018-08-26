@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 #
 gem 'haml-rails'
 gem 'faraday', '0.10'
+gem 'faraday_middleware'
 gem 'sidekiq'
 gem 'redis-namespace'
 gem 'aasm'
