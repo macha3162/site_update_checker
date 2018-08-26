@@ -1,4 +1,5 @@
 class Site < ApplicationRecord
+  require 'open-uri'
   include AASM
   paginates_per 50
 
@@ -48,13 +49,10 @@ class Site < ApplicationRecord
   # 前回クロール時より差分が合った場合には、データを保存する。
   # return true: 差分あり, false: 差分なし
   def crawling
-
-
-    response = Faraday.get url
-    body_html = response.body.toutf8
+    body_html, site_status = get_content(url)
     touch(:last_crawled_at)
     current_version = site_versions.last
-    new_version = site_versions.build({body: body_html, status_code: response.status})
+    new_version = site_versions.build({ body: body_html, status_code: site_status })
     if new_version.generate_check_sum == current_version.try(:checksum)
       new_version.destroy
       logger.info '前回取得分からコンテンツに差分はありませんでした。'
@@ -66,18 +64,24 @@ class Site < ApplicationRecord
     end
   end
 
-  # def get_content(url)
-  #   response = Faraday.get url
-  #
-  #   case response.headers['content-type']
-  #   when /pdf/
-  #     PDF::Reader.new
-  #   end
-  # end
-  #
-  # require 'open-uri'
-  #
-  # io = open('http://example.com/somefile.pdf')
-  # reader = PDF::Reader.new(io)
-  # puts reader.info
+  private
+
+  def get_content(url)
+    response = Faraday.get url
+    case response.headers['content-type']
+    when /pdf/
+      begin
+        reader = PDF::Reader.new(open(url))
+        body = reader.pages.map do |page|
+          page.text.toutf8
+        end.join
+        return body, response.status
+      rescue => e
+        logger.errror(e)
+        return 'エラーが発生しました', response.status
+      else
+        return response.body.toutf8, response.status
+      end
+    end
+  end
 end
