@@ -18,7 +18,12 @@ class SiteCrawlJob < ApplicationJob
         site.error!
       end
     else
-      logger.info '差分の確認が済んでいないのでクローリングをスキップします。'
+      # 実行から1日以上経過したものは、エラーとする
+      if site.updated_at < Date.yesterday
+        site.error!
+      else
+        logger.info '差分の確認が済んでいないのでクローリングをスキップします。'
+      end
     end
   end
 end
