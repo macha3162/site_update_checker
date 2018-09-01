@@ -19,6 +19,9 @@
 %dl.dl-horizontal
   %dt= "#{Site.human_attribute_name(:name)} :"
   %dd= @site.name
+  -if @site.law_no.present?
+    %dt= "#{Site.human_attribute_name(:law_no)} :"
+    %dd= @site.law_no
   %dt= "#{Site.human_attribute_name(:url)} :"
   %dd= link_to @site.url, @site.url, target: '_blank'
   %dt ステータス :

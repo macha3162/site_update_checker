@@ -23,6 +23,8 @@
         %th.text-center.some{ :style => "width: 300px" }
           = sort_link @q, :name
         %th.text-center
+          = sort_link @q, :law_no
+        %th.text-center
           = sort_link @q, :url
         %th.text-center
           = sort_link @q, :status, 'Status'
@@ -34,6 +36,7 @@
       - @sites.each do |site|
         %tr
           %td= site.name
+          %td= site.law_no
           %td= link_to (truncate site.try(:url) || '', length: 80), site.try(:url), target: '_blank'
           %td.text-center= site.aasm(:status).human_state
           %td.text-right= time_ago_in_words site.last_crawled_at if site.last_crawled_at.present?

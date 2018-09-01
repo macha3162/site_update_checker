@@ -88,6 +88,7 @@ ja:
       site:
         name: サイト名
         url: URL
+        law_no: 法令番号
         last_crawled_at: 最終巡回日時
         status:
           non_diff: 差分なし
